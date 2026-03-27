@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <head>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Sanchez MX | Perfumería</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Didot","Times New Roman",serif;
+}
+body{
+  background:#f8f8f8;
+  color:#111;
+}
+header{
+  background:#fff;
+  text-align:center;
+  padding:40px 20px;
+  border-bottom:1px solid #ddd;
+}
+header h1{
+  letter-spacing:4px;
+  font-weight:400;
+  font-size:2.6em;
+}
+header p{
+  color:#777;
+  letter-spacing:2px;
+  margin-top:8px;
+}
+nav{
+  background:#fff;
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  padding:15px;
+  border-bottom:1px solid #ddd;
+  position:sticky;
+  top:0;
+}
+nav a{
+  text-decoration:none;
+  color:#111;
+  letter-spacing:1px;
+}
+.banner{
+  height:380px;
+  background:url("https://images.unsplash.com/photo-1594035910387-fea47794261f") center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+}
+.banner h2{
+  font-size:2.5em;
+  text-shadow:0 4px 15px rgba(0,0,0,.6);
+}
+section h2{
+  text-align:center;
+  margin:60px 0 20px;
+  letter-spacing:2px;
+  font-weight:400;
+}
+.productos{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
+  padding:20px;
+}
+.producto{
+  background:#fff;
+  width:260px;
+  border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,.05);
+  overflow:hidden;
+  transition:.3s;
+}
+.producto:hover{
+  transform:translateY(-5px);
+}
+.producto img{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+}
+.producto h3{
+  text-align:center;
+  margin:12px 0 5px;
+  font-size:0.95em;
+}
+.precio{
+  text-align:center;
+  color:#666;
+  font-weight:bold;
+}
+.boton{
+  display:block;
+  margin:15px auto 20px;
+  background:#bfa046;
+  color:#111;
+  border:none;
+  padding:10px;
+  width:85%;
+  border-radius:4px;
+  cursor:pointer;
+  font-weight:bold;
+  letter-spacing:1px;
+  transition:.3s;
+}
+.boton:hover{
+  background:#a88832;
+}
+footer{
+  background:#fff;
+  text-align:center;
+  padding:25px;
+  font-size:.9em;
+  color:#777;
+  border-top:1px solid #ddd;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.intensidad-container {
+  text-align: center;
+  margin: 12px 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.intensidad-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.intensidad-puntos {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.punto {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ddd;
+}
+
+.punto.activo {
+  background: #000;
+}
+
+.buscador-container{
+text-align:center;
+margin:30px 0;
+}
+
+#buscador{
+width:300px;
+max-width:90%;
+padding:12px;
+border-radius:30px;
+border:1px solid #ddd;
+font-size:14px;
+font-family:'Montserrat',sans-serif;
+outline:none;
+transition:0.3s;
+}
+
+#buscador:focus{
+border-color:#000;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>MAISON SANCHEZ MX</h1>
+<p>Perfumes originales · Árabes · Nicho</p>
+</header>
+<div class="buscador-container">
+<input type="text" id="buscador" placeholder="Buscar perfume..." onkeyup="buscarPerfume()">
+</div>
+<nav>
+<a href="#disenador">Diseñador</a>
+<a href="#arabes">Árabes</a>
+<a href="#nicho">Nicho</a>
+</nav>
+
+<div class="banner">
+<h2>La casa del buen aroma</h2>
+</div>
+
+<!-- DISEÑADOR -->
+<section id="disenador">
+<h2>Perfumes de Diseñador</h2>
+<div class="productos">
+
+<!-- 🌟 PERFUMES DE DISEÑADOR -->
+
+<div class="producto">
+<img src="https://arome.mx/cdn/shop/files/edp-dior-sauvage-forte-x100cc_1200x1200.png?v=1741012484">
+<h3>Dior Sauvage Eau de Parfum</h3>
+<p class="precio">$2,699 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Dior Sauvage Eau de Parfum')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://www.chanel.com/images/t_one/t_fragrance/q_auto:good,f_auto,fl_lossy,dpr_1.1/w_1920/bleu-de-chanel-eau-de-toilette-spray-3-4fl-oz--packshot-default-107460-9564920184862.jpg">
+<h3>Bleu de Chanel EDP</h3>
+<p class="precio">$2,899 MXN</p>
+<div class="intensidad-container" data-intensidad="3"></div>
+<button class="boton" onclick="preguntarWhatsApp('Bleu de Chanel EDP')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://wewardoble.com/cdn/shop/files/ysl.png?v=1744935330">
+<h3>YSL Y Eau de Parfum</h3>
+<p class="precio">$2,799 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('YSL Y Eau de Parfum')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSqCjhlx48ZjcH98lxupWNd1bo9XbgVmHLVg&s">
+<h3>Versace Eros</h3>
+<p class="precio">$2,499 MXN</p>
+<div class="intensidad-container" data-intensidad="5"></div>
+<button class="boton" onclick="preguntarWhatsApp('Versace Eros')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://scentsoriale.com.mx/cdn/shop/files/Screenshot2024-08-18160121.png?v=1739848634&width=1200">
+<h3>Acqua di Giò Profumo</h3>
+<p class="precio">$2,999 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Acqua di Giò Profumo')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://abscents.com.mx/cdn/shop/files/LEMALE-fotor-20240403165432.jpg?v=1712184885&width=1080">
+<h3>Jean Paul Gaultier Le Male</h3>
+<p class="precio">$2,599 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Jean Paul Gaultier Le Male')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7I_Ka0QBjYuItfM9vMLoJ7Sw9TxM9ezJVpQ&s">
+<h3>Jean Paul Gaultier Le Beau</h3>
+<p class="precio">$2,699 MXN</p>
+<div class="intensidad-container" data-intensidad="3"></div>
+<button class="boton" onclick="preguntarWhatsApp('Jean Paul Gaultier Le Beau')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://ss701.liverpool.com.mx/xl/1098117201.jpg">
+<h3>Paco Rabanne 1 Million</h3>
+<p class="precio">$2,599 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Paco Rabanne 1 Million')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://ss881.suburbia.com.mx/xl/2968114.jpg">
+<h3>Paco Rabanne Invictus</h3>
+<p class="precio">$2,599 MXN</p>
+<div class="intensidad-container" data-intensidad="3"></div>
+<button class="boton" onclick="preguntarWhatsApp('Paco Rabanne Invictus')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu3-_tS8cqlEhTU-wzSl8t8KHpfAWYgDWrdg&s">
+<h3>Armani Stronger With You</h3>
+<p class="precio">$2,799 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Armani Stronger With You')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://ss701.liverpool.com.mx/xl/1177471158.jpg">
+<h3>Dolce & Gabbana Light Blue</h3>
+<p class="precio">$2,399 MXN</p>
+<div class="intensidad-container" data-intensidad="2"></div>
+<button class="boton" onclick="preguntarWhatsApp('Dolce & Gabbana Light Blue')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3zsNWLUdsmy6r5EVg02nPG4vLMqsyWbE82Q&s">
+<h3>Dolce & Gabbana K EDP</h3>
+<p class="precio">$2,699 MXN</p>
+<div class="intensidad-container" data-intensidad="3"></div>
+<button class="boton" onclick="preguntarWhatsApp('Dolce & Gabbana K EDP')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://ss701.liverpool.com.mx/xl/1141945196.jpg">
+<h3>Valentino Uomo Born In Roma</h3>
+<p class="precio">$2,899 MXN</p>
+<div class="intensidad-container" data-intensidad="3"></div>
+<button class="boton" onclick="preguntarWhatsApp('Valentino Uomo Born In Roma')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://m.media-amazon.com/images/I/518Dkni9PqL.jpg">
+<h3>Givenchy Gentleman EDP</h3>
+<p class="precio">$2,799 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Givenchy Gentleman EDP')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://ss701.liverpool.com.mx/xl/1132561385.jpg">
+<h3>Prada Luna Rossa Carbon</h3>
+<p class="precio">$2,699 MXN</p>
+<div class="intensidad-container" data-intensidad="3"></div>
+<button class="boton" onclick="preguntarWhatsApp('Prada Luna Rossa Carbon')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.68627.jpg">
+<h3>Burberry Hero</h3>
+<p class="precio">$2,599 MXN</p>
+<div class="intensidad-container" data-intensidad="3"></div>
+<button class="boton" onclick="preguntarWhatsApp('Burberry Hero')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/im1.jpeg">
+<h3>Montblanc Explorer</h3>
+<p class="precio">$2,199 MXN</p>
+<div class="intensidad-container" data-intensidad="3"></div>
+<button class="boton" onclick="preguntarWhatsApp('Montblanc Explorer')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/im2.jpeg">
+<h3>Hugo Boss Bottled</h3>
+<p class="precio">$2,299 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Hugo Boss Bottled')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/WhatsApp Image 2026-03-05 at 09.26.50.jpeg">
+<h3>Carolina Herrera 212 Men</h3>
+<p class="precio">$2,499 MXN</p>
+<div class="intensidad-container" data-intensidad="3"></div>
+<button class="boton" onclick="preguntarWhatsApp('Carolina Herrera 212 Men')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/WhatsApp Image 2026-03-05 at 09.27.14.jpeg">
+<h3>Calvin Klein One</h3>
+<p class="precio">$1,799 MXN</p>
+<div class="intensidad-container" data-intensidad="2"></div>
+<button class="boton" onclick="preguntarWhatsApp('Calvin Klein One')">Preguntar</button>
+</div>
+</div>
+</section>
+
+<section id="arabes">
+<h2>Perfumes Árabes</h2>
+<div class="productos">
+
+ <!-- 🕌 PERFUMES ÁRABES -->
+
+
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ara1.jpeg">
+<h3>Lattafa Asad</h3>
+<p class="precio">$1,199 MXN</p>
+<div class="intensidad-container" data-intensidad="5"></div>
+<button class="boton" onclick="preguntarWhatsApp('Lattafa Asad')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="h/Users/veronicasanchez/Desktop/bry/ara2.jpeg">
+<h3>Lattafa Fakhar Black</h3>
+<p class="precio">$1,099 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Lattafa Fakhar Black')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ara3.jpeg">
+<h3>Lattafa Khamrah</h3>
+<p class="precio">$1,299 MXN</p>
+<div class="intensidad-container" data-intensidad="5"></div>
+<button class="boton" onclick="preguntarWhatsApp('Lattafa Khamrah')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ara4.jpeg">
+<h3>Lattafa Bade’e Al Oud Oud for Glory</h3>
+<p class="precio">$1,199 MXN</p>
+<div class="intensidad-container" data-intensidad="5"></div>
+<button class="boton" onclick="preguntarWhatsApp('Lattafa Bade’e Al Oud Oud for Glory')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ara5.jpeg">
+<h3>Afnan 9PM</h3>
+<p class="precio">$1,299 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Afnan 9PM')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ara6.jpeg">
+<h3>Afnan Supremacy Not Only Intense</h3>
+<p class="precio">$1,399 MXN</p>
+<div class="intensidad-container" data-intensidad="5"></div>
+<button class="boton" onclick="preguntarWhatsApp('Afnan Supremacy Not Only Intense')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ara7.jpeg">
+<h3>Armaf Club de Nuit Intense Man</h3>
+<p class="precio">$1,199 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Armaf Club de Nuit Intense Man')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="h/Users/veronicasanchez/Desktop/bry/ara8.jpeg">
+<h3>Armaf Club de Nuit Sillage</h3>
+<p class="precio">$1,299 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Armaf Club de Nuit Sillage')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.46806.jpg">
+<h3>Rasasi Hawas</h3>
+<p class="precio">$1,299 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Rasasi Hawas')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ara9.jpeg">
+<h3>Rasasi La Yuqawam</h3>
+<p class="precio">$1,499 MXN</p>
+<div class="intensidad-container" data-intensidad="5"></div>
+<button class="boton" onclick="preguntarWhatsApp('Rasasi La Yuqawam')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ara10.jpeg">
+<h3>Swiss Arabian Shaghaf Oud</h3>
+<p class="precio">$1,199 MXN</p>
+<div class="intensidad-container" data-intensidad="5"></div>
+<button class="boton" onclick="preguntarWhatsApp('Swiss Arabian Shaghaf Oud')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ara11.jpeg">
+<h3>Swiss Arabian Shaghaf Oud Aswad</h3>
+<p class="precio">$1,299 MXN</p>
+<div class="intensidad-container" data-intensidad="5"></div>
+<button class="boton" onclick="preguntarWhatsApp('Swiss Arabian Shaghaf Oud Aswad')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.43786.jpg">
+<h3>Al Haramain Amber Oud Gold Edition</h3>
+<p class="precio">$1,399 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Al Haramain Amber Oud Gold Edition')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.62049.jpg">
+<h3>Al Haramain Detour Noir</h3>
+<p class="precio">$1,199 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Al Haramain Detour Noir')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.38376.jpg">
+<h3>Al Haramain L’Aventure</h3>
+<p class="precio">$1,299 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Al Haramain L’Aventure')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.53839.jpg">
+<h3>Ajmal Evoke Gold</h3>
+<p class="precio">$1,099 MXN</p>
+<div class="intensidad-container" data-intensidad="3"></div>
+<button class="boton" onclick="preguntarWhatsApp('Ajmal Evoke Gold')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.27719.jpg">
+<h3>Ajmal Wisal Dhahab</h3>
+<p class="precio">$1,199 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Ajmal Wisal Dhahab')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.60264.jpg">
+<h3>Lattafa Qaed Al Fursan</h3>
+<p class="precio">$999 MXN</p>
+<div class="intensidad-container" data-intensidad="3"></div>
+<button class="boton" onclick="preguntarWhatsApp('Lattafa Qaed Al Fursan')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.71556.jpg">
+<h3>Afnan Turathi Blue</h3>
+<p class="precio">$1,299 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Afnan Turathi Blue')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.27817.jpg">
+<h3>Ard Al Zaafaran Dirham</h3>
+<p class="precio">$899 MXN</p>
+<div class="intensidad-container" data-intensidad="2"></div>
+<button class="boton" onclick="preguntarWhatsApp('Ard Al Zaafaran Dirham')">Preguntar</button>
+</div>
+
+</div>
+</section>
+
+<!-- NICHO -->
+<section id="nicho">
+<h2>Perfumes Nicho</h2>
+<div class="productos">
+
+<!-- 🧪 PERFUMES NICHO -->
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/WhatsApp Image 2026-03-05 at 09.27.54.jpeg">
+<h3>Creed Aventus</h3>
+<p class="precio">$6,999 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Creed Aventus')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ni1.jpeg">
+<h3>Maison Francis Kurkdjian Baccarat Rouge 540</h3>
+<p class="precio">$7,499 MXN</p>
+<div class="intensidad-container" data-intensidad="5"></div>
+<button class="boton" onclick="preguntarWhatsApp('Maison Francis Kurkdjian Baccarat Rouge 540')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/layton.jpeg">
+<h3>Parfums de Marly Layton</h3>
+<p class="precio">$5,999 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Parfums de Marly Layton')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ni2.jpeg">
+<h3>Parfums de Marly Pegasus</h3>
+<p class="precio">$5,999 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Parfums de Marly Pegasus')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/WhatsApp Image 2026-03-05 at 09.29.46.jpeg">
+<h3>Nishane Hacivat</h3>
+<p class="precio">$4,999 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Nishane Hacivat')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ni3.jpeg">
+<h3>Xerjoff Naxos</h3>
+<p class="precio">$6,499 MXN</p>
+<div class="intensidad-container" data-intensidad="5"></div>
+<button class="boton" onclick="preguntarWhatsApp('Xerjoff Naxos')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ni4.jpeg">
+<h3>Amouage Interlude Man</h3>
+<p class="precio">$6,999 MXN</p>
+<div class="intensidad-container" data-intensidad="5"></div>
+<button class="boton" onclick="preguntarWhatsApp('Amouage Interlude Man')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ni5.jpeg">
+<h3>Amouage Reflection Man</h3>
+<p class="precio">$6,999 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Amouage Reflection Man')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ni6.jpeg">
+<h3>Orto Parisi Megamare</h3>
+<p class="precio">$5,499 MXN</p>
+<div class="intensidad-container" data-intensidad="5"></div>
+<button class="boton" onclick="preguntarWhatsApp('Orto Parisi Megamare')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.15211.jpg">
+<h3>Mancera Cedrat Boise</h3>
+<p class="precio">$3,999 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Mancera Cedrat Boise')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.54885.jpg">
+<h3>Mancera Instant Crush</h3>
+<p class="precio">$3,999 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Mancera Instant Crush')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ni7.jpeg">
+<h3>Byredo Gypsy Water</h3>
+<p class="precio">$5,499 MXN</p>
+<div class="intensidad-container" data-intensidad="3"></div>
+<button class="boton" onclick="preguntarWhatsApp('Byredo Gypsy Water')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ni8.jpeg">
+<h3>Byredo Bal d’Afrique</h3>
+<p class="precio">$5,499 MXN</p>
+<div class="intensidad-container" data-intensidad="3"></div>
+<button class="boton" onclick="preguntarWhatsApp('Byredo Bal d’Afrique')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.20541.jpg">
+<h3>Maison Margiela Replica Jazz Club</h3>
+<p class="precio">$3,999 MXN</p>
+<div class="intensidad-container" data-intensidad="3"></div>
+<button class="boton" onclick="preguntarWhatsApp('Maison Margiela Replica Jazz Club')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.31623.jpg">
+<h3>Maison Margiela Replica By the Fireplace</h3>
+<p class="precio">$3,999 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Maison Margiela Replica By the Fireplace')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ni9.jpeg">
+<h3>Initio Oud for Greatness</h3>
+<p class="precio">$6,999 MXN</p>
+<div class="intensidad-container" data-intensidad="5"></div>
+<button class="boton" onclick="preguntarWhatsApp('Initio Oud for Greatness')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="/Users/veronicasanchez/Desktop/bry/ni10.jpeg">
+<h3>Roja Parfums Elysium</h3>
+<p class="precio">$7,999 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Roja Parfums Elysium')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.46235.jpg">
+<h3>Tiziana Terenzi Kirke</h3>
+<p class="precio">$5,499 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Tiziana Terenzi Kirke')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.6472.jpg">
+<h3>Nasomatto Black Afgano</h3>
+<p class="precio">$6,499 MXN</p>
+<div class="intensidad-container" data-intensidad="5"></div>
+<button class="boton" onclick="preguntarWhatsApp('Nasomatto Black Afgano')">Preguntar</button>
+</div>
+
+<div class="producto">
+<img src="https://fimgs.net/mdimg/perfume/o.44504.jpg">
+<h3>Bond No. 9 Lafayette Street</h3>
+<p class="precio">$7,499 MXN</p>
+<div class="intensidad-container" data-intensidad="4"></div>
+<button class="boton" onclick="preguntarWhatsApp('Bond No. 9 Lafayette Street')">Preguntar</button>
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2025 Maison Sanchez MX · Perfumería
+</footer>
+
+<script>
+function preguntarWhatsApp(perfume){
+  const telefono = "5215519601884";
+  const mensaje = `Hola 👋, me interesa el perfume ${perfume}. ¿Me das más información?`;
+  window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`,"_blank");
+}
+</script>
+<script>
+function preguntarWhatsApp(perfume){
+  const telefono = "5215519601884";
+  const mensaje = `Hola 👋, me interesa el perfume ${perfume}. ¿Me das más información?`;
+  window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`,"_blank");
+}
+
+document.querySelectorAll(".intensidad-container").forEach(container => {
+  const nivel = parseInt(container.dataset.intensidad);
+
+  const label = document.createElement("span");
+  label.classList.add("intensidad-label");
+  label.textContent = "Intensidad";
+  container.appendChild(label);
+
+  const puntosDiv = document.createElement("div");
+  puntosDiv.classList.add("intensidad-puntos");
+
+  for (let i = 1; i <= 5; i++) {
+    const punto = document.createElement("div");
+    punto.classList.add("punto");
+    if (i <= nivel) {
+      punto.classList.add("activo");
+    }
+    puntosDiv.appendChild(punto);
+  }
+
+  container.appendChild(puntosDiv);
+});
+
+<script>
+function buscarPerfume() {
+
+let input = document.getElementById("buscador").value.toLowerCase();
+let productos = document.querySelectorAll(".producto");
+
+productos.forEach(producto => {
+
+let nombre = producto.querySelector("h3").textContent.toLowerCase();
+
+if(nombre.includes(input)){
+producto.style.display = "";
+}else{
+producto.style.display = "none";
+}
+
+});
+
+}
+</script>
+</script>
+</body>
+</html>
