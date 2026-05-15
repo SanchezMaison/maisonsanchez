@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fragancias | Maison Sánchez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#050505; color:white; font-family:'Montserrat',sans-serif; overflow-x:hidden; }
+    a { text-decoration:none; color:inherit; }
+
+    /* NAVBAR */
+    header {
+      position:fixed; top:0; width:100%; z-index:1000;
+      backdrop-filter:blur(12px); background:rgba(0,0,0,0.85);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .navbar {
+      max-width:1400px; margin:auto; padding:22px 40px;
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    .logo { font-family:'Cormorant Garamond',serif; font-size:36px; letter-spacing:5px; text-transform:uppercase; font-weight:600; }
+    .nav-links { display:flex; gap:35px; text-transform:uppercase; font-size:12px; letter-spacing:3px; color:#d0d0d0; }
+    .nav-links a:hover { color:white; transition:0.3s; }
+    .nav-links a.active { color:white; border-bottom:1px solid white; padding-bottom:2px; }
+
+    /* HERO BANNER */
+    .page-hero {
+      height:60vh; min-height:400px;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(5,5,5,1)),
+        url('https://images.unsplash.com/photo-1541643600914-78b084683601?w=1600') center/cover;
+      display:flex; align-items:flex-end; padding:0 40px 70px;
+    }
+    .page-hero-content { max-width:1400px; width:100%; margin:auto; animation:fadeUp 0.9s ease; }
+    .breadcrumb { text-transform:uppercase; letter-spacing:5px; color:#888; font-size:11px; margin-bottom:18px; }
+    .breadcrumb a:hover { color:white; transition:0.2s; }
+    .page-title { font-family:'Cormorant Garamond',serif; font-size:90px; line-height:1; margin-bottom:15px; }
+    .page-desc { color:#aaa; font-size:15px; letter-spacing:1px; max-width:500px; }
+
+    /* FILTERS */
+    .filters-bar {
+      max-width:1400px; margin:50px auto 0; padding:0 40px;
+      display:flex; gap:15px; flex-wrap:wrap; align-items:center;
+    }
+    .filter-label { text-transform:uppercase; letter-spacing:3px; font-size:11px; color:#666; margin-right:10px; }
+    .filter-btn {
+      padding:10px 22px; border-radius:50px;
+      border:1px solid rgba(255,255,255,0.15);
+      background:transparent; color:#aaa; cursor:pointer;
+      font-family:'Montserrat',sans-serif; font-size:12px; text-transform:uppercase; letter-spacing:2px;
+      transition:0.3s;
+    }
+    .filter-btn:hover, .filter-btn.active { background:white; color:black; border-color:white; }
+
+    /* CATALOG GRID */
+    .catalog-section { padding:50px 40px 120px; max-width:1400px; margin:auto; }
+    .catalog-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:30px; }
+
+    .product-card {
+      background:#0f0f0f; border:1px solid rgba(255,255,255,0.07);
+      border-radius:24px; overflow:hidden; transition:0.4s; cursor:pointer;
+    }
+    .product-card:hover { transform:translateY(-8px); border-color:rgba(255,255,255,0.2); box-shadow:0 20px 60px rgba(0,0,0,0.5); }
+
+    .product-img { height:320px; overflow:hidden; position:relative; }
+    .product-img img { width:100%; height:100%; object-fit:cover; transition:0.6s; }
+    .product-card:hover .product-img img { transform:scale(1.08); }
+    .badge {
+      position:absolute; top:18px; left:18px;
+      background:white; color:black; padding:6px 14px; border-radius:50px;
+      font-size:10px; text-transform:uppercase; letter-spacing:2px; font-weight:600;
+    }
+
+    .product-body { padding:25px 28px 28px; }
+    .product-cat { text-transform:uppercase; letter-spacing:4px; color:#666; font-size:10px; margin-bottom:10px; }
+    .product-name { font-family:'Cormorant Garamond',serif; font-size:32px; margin-bottom:8px; line-height:1.1; }
+    .product-sub { color:#777; font-size:12px; margin-bottom:20px; letter-spacing:1px; }
+    .product-footer { display:flex; justify-content:space-between; align-items:center; }
+    .product-price { font-size:17px; font-weight:500; }
+
+    .btn {
+      padding:13px 28px; border-radius:12px; border:none; cursor:pointer;
+      font-size:12px; text-transform:uppercase; letter-spacing:2px;
+      transition:0.3s; font-family:'Montserrat',sans-serif;
+    }
+    .btn-primary { background:white; color:black; }
+    .btn-primary:hover { transform:translateY(-3px); box-shadow:0 8px 25px rgba(255,255,255,0.15); }
+
+    /* MODAL */
+    .modal-overlay {
+      position:fixed; inset:0; background:rgba(0,0,0,0.85);
+      backdrop-filter:blur(8px); z-index:2000;
+      display:flex; justify-content:center; align-items:center; padding:20px;
+      opacity:0; pointer-events:none; transition:0.35s;
+    }
+    .modal-overlay.open { opacity:1; pointer-events:all; }
+    .modal {
+      background:#111; border:1px solid rgba(255,255,255,0.1);
+      border-radius:32px; max-width:750px; width:100%;
+      display:grid; grid-template-columns:1fr 1fr;
+      overflow:hidden; transform:translateY(30px); transition:0.35s;
+    }
+    .modal-overlay.open .modal { transform:translateY(0); }
+    .modal-img { height:100%; min-height:400px; overflow:hidden; }
+    .modal-img img { width:100%; height:100%; object-fit:cover; }
+    .modal-body { padding:45px 40px; display:flex; flex-direction:column; justify-content:space-between; }
+    .modal-cat { text-transform:uppercase; letter-spacing:5px; color:#666; font-size:10px; margin-bottom:15px; }
+    .modal-name { font-family:'Cormorant Garamond',serif; font-size:52px; line-height:1; margin-bottom:12px; }
+    .modal-desc { color:#999; font-size:13px; line-height:1.8; margin-bottom:25px; }
+    .modal-price { font-size:22px; font-weight:500; margin-bottom:30px; }
+    .modal-close {
+      position:absolute; top:25px; right:30px;
+      background:none; border:none; color:white; font-size:28px;
+      cursor:pointer; opacity:0.5; transition:0.2s;
+    }
+    .modal-close:hover { opacity:1; }
+
+    footer { border-top:1px solid rgba(255,255,255,0.07); padding:45px 20px; text-align:center; color:#555; }
+    footer h3 { font-family:'Cormorant Garamond',serif; font-size:32px; letter-spacing:4px; margin-bottom:8px; }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(40px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    @media(max-width:700px) {
+      .page-title { font-size:58px; }
+      .modal { grid-template-columns:1fr; }
+      .modal-img { min-height:220px; }
+      .nav-links { display:none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <a href="index.html" class="logo">Maison Sánchez</a>
+      <nav class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="fragancias.html" class="active">Fragancias</a>
+        <a href="relojes.html">Relojes</a>
+        <a href="moda.html">Moda</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <p class="breadcrumb"><a href="index.html">Inicio</a> &nbsp;/&nbsp; Fragancias</p>
+      <h1 class="page-title">Fragancias</h1>
+      <p class="page-desc">Aromas únicos que definen identidades. Maison Collection.</p>
+    </div>
+  </div>
+
+  <div class="filters-bar">
+    <span class="filter-label">Filtrar</span>
+    <button class="filter-btn active" onclick="filterProducts('todos', this)">Todos</button>
+    <button class="filter-btn" onclick="filterProducts('hombre', this)">Hombre</button>
+    <button class="filter-btn" onclick="filterProducts('mujer', this)">Mujer</button>
+    <button class="filter-btn" onclick="filterProducts('unisex', this)">Unisex</button>
+    <button class="filter-btn" onclick="filterProducts('edicion', this)">Edición Limitada</button>
+  </div>
+
+  <div class="catalog-section">
+    <div class="catalog-grid" id="grid">
+
+      <div class="product-card" data-cat="hombre" data-name="Bleu Noir" data-sub="Eau de Parfum · 100ml" data-price="$5,999 MXN" data-img="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800" data-desc="Una fragancia oscura y magnética. Notas de cedro, cuero y ámbar que evocan la elegancia masculina sin esfuerzo. Persistencia excepcional.">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600" alt="Bleu Noir">
+          <span class="badge">Bestseller</span>
+        </div>
+        <div class="product-body">
+          <p class="product-cat">Hombre · EDP</p>
+          <h3 class="product-name">Bleu Noir</h3>
+          <p class="product-sub">Cedro · Cuero · Ámbar</p>
+          <div class="product-footer">
+            <p class="product-price">$5,999 MXN</p>
+            <button class="btn btn-primary" onclick="openModal(this.closest('.product-card'))">Ver</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="mujer" data-name="Rose Absolue" data-sub="Eau de Parfum · 75ml" data-price="$6,500 MXN" data-img="https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=800" data-desc="Icónico y femenino. Rosa búlgara, fresia y almizcle blanco. Una fragancia que encapsula la gracia sin artificios. Para quien sabe lo que quiere.">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=600" alt="Rose Absolue">
+          <span class="badge">Nuevo</span>
+        </div>
+        <div class="product-body">
+          <p class="product-cat">Mujer · EDP</p>
+          <h3 class="product-name">Rose Absolue</h3>
+          <p class="product-sub">Rosa · Fresia · Almizcle</p>
+          <div class="product-footer">
+            <p class="product-price">$6,500 MXN</p>
+            <button class="btn btn-primary" onclick="openModal(this.closest('.product-card'))">Ver</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="unisex" data-name="Oud Maison" data-sub="Extrait de Parfum · 50ml" data-price="$9,200 MXN" data-img="https://images.unsplash.com/photo-1600612253971-7b9b7e4b4d8e?w=800" data-desc="Nuestra joya árabe. Oud de Laos, sándalo de Mysore y resinas exóticas. Una experiencia olfativa inmersiva y duradera para paladares exigentes.">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1600612253971-7b9b7e4b4d8e?w=600" alt="Oud Maison">
+        </div>
+        <div class="product-body">
+          <p class="product-cat">Unisex · Extrait</p>
+          <h3 class="product-name">Oud Maison</h3>
+          <p class="product-sub">Oud · Sándalo · Resinas</p>
+          <div class="product-footer">
+            <p class="product-price">$9,200 MXN</p>
+            <button class="btn btn-primary" onclick="openModal(this.closest('.product-card'))">Ver</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="unisex" data-name="Sel Marin" data-sub="Eau de Toilette · 100ml" data-price="$4,200 MXN" data-img="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800" data-desc="Frescura marina con alma cálida. Notas de sal, bergamota y vetiver. El aroma del verano eterno en un frasco elegante.">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600" alt="Sel Marin">
+        </div>
+        <div class="product-body">
+          <p class="product-cat">Unisex · EDT</p>
+          <h3 class="product-name">Sel Marin</h3>
+          <p class="product-sub">Sal · Bergamota · Vetiver</p>
+          <div class="product-footer">
+            <p class="product-price">$4,200 MXN</p>
+            <button class="btn btn-primary" onclick="openModal(this.closest('.product-card'))">Ver</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="edicion" data-name="Nuit d'Or" data-sub="Extrait de Parfum · 30ml" data-price="$14,800 MXN" data-img="https://images.unsplash.com/photo-1619994403073-2cec844b8e63?w=800" data-desc="Edición limitada a 200 frascos numerados. Iris negro, ámbar gris y oro líquido. Una obra de arte olfativa que trasciende la perfumería.">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1619994403073-2cec844b8e63?w=600" alt="Nuit d'Or">
+          <span class="badge">Edición Limitada</span>
+        </div>
+        <div class="product-body">
+          <p class="product-cat">Unisex · Edición Limitada</p>
+          <h3 class="product-name">Nuit d'Or</h3>
+          <p class="product-sub">Iris · Ámbar Gris · Oro</p>
+          <div class="product-footer">
+            <p class="product-price">$14,800 MXN</p>
+            <button class="btn btn-primary" onclick="openModal(this.closest('.product-card'))">Ver</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="hombre" data-name="Forêt Noire" data-sub="Eau de Parfum · 100ml" data-price="$5,400 MXN" data-img="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=800" data-desc="Inspirado en los bosques nocturnos del norte. Pino negro, musgo de roble y tabaco curado. Masculinidad serena y profunda.">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600" alt="Forêt Noire">
+        </div>
+        <div class="product-body">
+          <p class="product-cat">Hombre · EDP</p>
+          <h3 class="product-name">Forêt Noire</h3>
+          <p class="product-sub">Pino · Musgo · Tabaco</p>
+          <div class="product-footer">
+            <p class="product-price">$5,400 MXN</p>
+            <button class="btn btn-primary" onclick="openModal(this.closest('.product-card'))">Ver</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal">
+      <div class="modal-img"><img id="modal-img" src="" alt=""></div>
+      <div class="modal-body">
+        <div>
+          <p class="modal-cat" id="modal-cat"></p>
+          <h2 class="modal-name" id="modal-name"></h2>
+          <p class="modal-desc" id="modal-desc"></p>
+          <p class="modal-price" id="modal-price"></p>
+        </div>
+        <button class="btn btn-primary" style="width:100%;padding:16px;" onclick="addToCart()">Agregar al Carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <h3>Maison Sánchez</h3>
+    <p>Fragancias · Relojes · Moda</p>
+  </footer>
+
+  <script>
+    function openModal(card) {
+      document.getElementById('modal-img').src = card.dataset.img;
+      document.getElementById('modal-cat').textContent = card.dataset.sub;
+      document.getElementById('modal-name').textContent = card.dataset.name;
+      document.getElementById('modal-desc').textContent = card.dataset.desc;
+      document.getElementById('modal-price').textContent = card.dataset.price;
+      document.getElementById('modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById('modal')) closeModal();
+    }
+    function addToCart() {
+      const name = document.getElementById('modal-name').textContent;
+      closeModal();
+      const notif = document.createElement('div');
+      notif.style.cssText = 'position:fixed;bottom:30px;right:30px;background:white;color:black;padding:16px 24px;border-radius:14px;font-size:13px;letter-spacing:1px;z-index:9999;animation:fadeUp 0.4s ease';
+      notif.textContent = '✓  ' + name + ' agregado al carrito';
+      document.body.appendChild(notif);
+      setTimeout(() => notif.remove(), 3000);
+    }
+    function filterProducts(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.product-card').forEach(card => {
+        const show = cat === 'todos' || card.dataset.cat === cat;
+        card.style.display = show ? 'block' : 'none';
+      });
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  </script>
+</body>
+</html>

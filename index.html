@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maison Sánchez | Luxury Boutique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+    body { background:#050505; color:white; font-family:'Montserrat',sans-serif; overflow-x:hidden; }
+    a { text-decoration:none; color:inherit; }
+
+    header {
+      position:fixed; top:0; width:100%; z-index:1000;
+      backdrop-filter:blur(12px);
+      background:rgba(0,0,0,0.75);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      transition:background 0.3s;
+    }
+    .navbar {
+      max-width:1400px; margin:auto; padding:25px 40px;
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    .logo { font-family:'Cormorant Garamond',serif; font-size:42px; letter-spacing:6px; text-transform:uppercase; font-weight:600; }
+    .nav-links { display:flex; gap:40px; text-transform:uppercase; font-size:13px; letter-spacing:3px; color:#d0d0d0; }
+    .nav-links a:hover { color:white; transition:0.3s; }
+
+    .hero {
+      height:100vh;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.85)),
+        url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1600') center/cover;
+      display:flex; justify-content:center; align-items:center; text-align:center; padding:20px;
+    }
+    .hero-content { max-width:950px; animation:fadeUp 1.2s ease; }
+    .hero-subtitle { text-transform:uppercase; letter-spacing:8px; color:#cfcfcf; margin-bottom:25px; font-size:12px; }
+    .hero-title { font-family:'Cormorant Garamond',serif; font-size:110px; line-height:1; margin-bottom:30px; }
+    .hero-text { color:#d4d4d4; font-size:18px; line-height:1.9; margin-bottom:40px; }
+    .hero-buttons { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
+
+    .btn { padding:18px 40px; border-radius:14px; border:none; cursor:pointer; font-size:14px; text-transform:uppercase; letter-spacing:2px; transition:0.35s; font-family:'Montserrat',sans-serif; }
+    .btn-primary { background:white; color:black; }
+    .btn-primary:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(255,255,255,0.15); }
+    .btn-secondary { background:transparent; border:1px solid white; color:white; }
+    .btn-secondary:hover { background:white; color:black; }
+
+    section { padding:120px 40px; }
+    .section-title { text-align:center; margin-bottom:70px; }
+    .section-subtitle { text-transform:uppercase; letter-spacing:6px; color:#888; margin-bottom:15px; font-size:12px; }
+    .section-main-title { font-family:'Cormorant Garamond',serif; font-size:70px; }
+
+    /* CATEGORY CARDS — ahora son links */
+    .categories-grid {
+      max-width:1400px; margin:auto;
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:30px;
+    }
+    .category-card {
+      height:500px; border-radius:30px; overflow:hidden;
+      position:relative; cursor:pointer; display:block;
+      text-decoration:none; color:white;
+    }
+    .category-card img { width:100%; height:100%; object-fit:cover; transition:0.7s; }
+    .category-card:hover img { transform:scale(1.12); }
+    .category-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.15));
+      transition:0.4s;
+    }
+    .category-card:hover .category-overlay { background:linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.3)); }
+    .category-info { position:absolute; bottom:40px; left:35px; z-index:5; }
+    .category-info h3 { font-family:'Cormorant Garamond',serif; font-size:42px; margin-bottom:10px; }
+    .category-info p { text-transform:uppercase; letter-spacing:4px; font-size:12px; color:#d4d4d4; }
+
+    /* flecha hover */
+    .category-arrow {
+      position:absolute; bottom:44px; right:35px; z-index:5;
+      font-size:28px; opacity:0; transform:translateX(-10px);
+      transition:0.4s;
+    }
+    .category-card:hover .category-arrow { opacity:1; transform:translateX(0); }
+
+    /* PRODUCTS */
+    .products { background:#0b0b0b; }
+    .products-grid {
+      max-width:1400px; margin:auto;
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px;
+    }
+    .product-card {
+      background:#111; border:1px solid rgba(255,255,255,0.08);
+      border-radius:28px; overflow:hidden; transition:0.4s;
+    }
+    .product-card:hover { transform:translateY(-10px); border-color:rgba(255,255,255,0.25); box-shadow:0 0 30px rgba(255,255,255,0.08); }
+    .product-image { height:340px; overflow:hidden; }
+    .product-image img { width:100%; height:100%; object-fit:cover; }
+    .product-info { padding:28px; }
+    .product-category { text-transform:uppercase; letter-spacing:4px; color:#888; font-size:11px; margin-bottom:12px; }
+    .product-name { font-family:'Cormorant Garamond',serif; font-size:34px; margin-bottom:18px; }
+    .product-footer { display:flex; justify-content:space-between; align-items:center; }
+    .product-price { font-size:18px; }
+
+    /* VIP */
+    .vip-box {
+      max-width:1200px; margin:auto;
+      background:linear-gradient(145deg,#161616,#070707);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:40px; padding:100px 50px; text-align:center;
+    }
+    .vip-title { font-family:'Cormorant Garamond',serif; font-size:80px; margin-bottom:25px; }
+    .vip-text { max-width:800px; margin:0 auto 40px; color:#c4c4c4; line-height:1.9; font-size:18px; }
+
+    footer { border-top:1px solid rgba(255,255,255,0.08); padding:50px 20px; text-align:center; color:#777; }
+    footer h3 { font-family:'Cormorant Garamond',serif; font-size:38px; margin-bottom:10px; letter-spacing:4px; }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(50px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    @media(max-width:900px) {
+      .hero-title { font-size:70px; }
+      .section-main-title { font-size:50px; }
+      .vip-title { font-size:55px; }
+      .nav-links { display:none; }
+    }
+    @media(max-width:600px) {
+      .hero-title { font-size:52px; }
+      .logo { font-size:28px; }
+      section { padding:90px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <div class="logo">Maison Sánchez</div>
+      <nav class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="fragancias.html">Fragancias</a>
+        <a href="relojes.html">Relojes</a>
+        <a href="moda.html">Moda</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-subtitle">Luxury • Fashion • Elegance</p>
+      <h1 class="hero-title">Maison Sánchez</h1>
+      <p class="hero-text">Boutique de lujo contemporánea especializada en fragancias, relojes, moda, sneakers, cosméticos y experiencias premium.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">Explorar Boutique</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">Colecciones</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="categories">
+    <div class="section-title">
+      <p class="section-subtitle">Luxury Selection</p>
+      <h2 class="section-main-title">Colecciones</h2>
+    </div>
+
+    <div class="categories-grid">
+
+      <!-- Tarjeta Fragancias → fragancias.html -->
+      <a class="category-card" href="fragancias.html">
+        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=800" alt="Fragancias">
+        <div class="category-overlay"></div>
+        <div class="category-info">
+          <h3>Fragancias</h3>
+          <p>Maison Collection</p>
+        </div>
+        <span class="category-arrow">→</span>
+      </a>
+
+      <!-- Tarjeta Relojes → relojes.html -->
+      <a class="category-card" href="relojes.html">
+        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800" alt="Relojes">
+        <div class="category-overlay"></div>
+        <div class="category-info">
+          <h3>Relojes</h3>
+          <p>Luxury Timepieces</p>
+        </div>
+        <span class="category-arrow">→</span>
+      </a>
+
+      <!-- Tarjeta Moda → moda.html -->
+      <a class="category-card" href="moda.html">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800" alt="Moda">
+        <div class="category-overlay"></div>
+        <div class="category-info">
+          <h3>Moda</h3>
+          <p>Modern Elegance</p>
+        </div>
+        <span class="category-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="products" id="products">
+    <div class="section-title">
+      <p class="section-subtitle">Maison Select</p>
+      <h2 class="section-main-title">Productos Destacados</h2>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-image"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600" alt="Bleu Noir"></div>
+        <div class="product-info">
+          <p class="product-category">Fragancias</p>
+          <h3 class="product-name">Bleu Noir</h3>
+          <div class="product-footer">
+            <p class="product-price">$5,999 MXN</p>
+            <a href="fragancias.html" class="btn btn-primary">Ver más</a>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image"><img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600" alt="Chronograph"></div>
+        <div class="product-info">
+          <p class="product-category">Relojes</p>
+          <h3 class="product-name">Chronograph</h3>
+          <div class="product-footer">
+            <p class="product-price">$18,500 MXN</p>
+            <a href="relojes.html" class="btn btn-primary">Ver más</a>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image"><img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=600" alt="Maison Jacket"></div>
+        <div class="product-info">
+          <p class="product-category">Moda</p>
+          <h3 class="product-name">Maison Jacket</h3>
+          <div class="product-footer">
+            <p class="product-price">$8,900 MXN</p>
+            <a href="moda.html" class="btn btn-primary">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="vip-box">
+      <p class="section-subtitle">Maison Experience</p>
+      <h2 class="vip-title">Luxury For Everyone</h2>
+      <p class="vip-text">En Maison Sánchez creemos que el lujo no debe sentirse distante. Nuestra boutique está diseñada para que cualquier persona pueda descubrir fragancias, moda, relojes y accesorios con una experiencia elegante, moderna y accesible.</p>
+      <button class="btn btn-primary" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">Explorar Colecciones</button>
+    </div>
+  </section>
+
+  <footer>
+    <h3>Maison Sánchez</h3>
+    <p>Luxury Boutique — Fragrances, Fashion & Lifestyle</p>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('header').style.background =
+        window.scrollY > 50 ? 'rgba(0,0,0,0.92)' : 'rgba(0,0,0,0.75)';
+    });
+  </script>
+</body>
+</html>
