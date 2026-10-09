@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Maison Sánchez | Inicio</title>
+  <meta name="description" content="Maison Sánchez: perfumes, relojes y moda de lujo seleccionados con cuidado y a buen precio.">
+
+  <!-- Tipografías: Cormorant Garamond (títulos) + Jost (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+/* ==========================================================
+   MAISON SÁNCHEZ — styles.css (base compartida)
+   Páginas: Inicio · Perfumes · Relojes · Moda
+   ========================================================== */
+
+/* ---------- 1. Variables ---------- */
+:root {
+  /* Color */
+  --negro: #0c0c0c;
+  --grafito: #1b1b1b;
+  --oro: #b8985a;
+  --oro-claro: #d2b87f;
+  --marfil: #f6f4ef;
+  --piedra: #8a8578;
+  --linea: rgba(184, 152, 90, 0.35);
+
+  /* Tipografía */
+  --fuente-titulo: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --fuente-texto: "Jost", "Helvetica Neue", Arial, sans-serif;
+
+  /* Escala tipográfica (fluida) */
+  --texto-s: 0.875rem;
+  --texto-m: 1rem;
+  --texto-l: clamp(1.125rem, 1.05rem + 0.4vw, 1.3rem);
+  --titulo-3: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --titulo-2: clamp(2rem, 1.6rem + 2vw, 3.25rem);
+  --titulo-1: clamp(2.75rem, 2rem + 4vw, 5.5rem);
+
+  /* Espaciado */
+  --espacio-1: 0.5rem;
+  --espacio-2: 1rem;
+  --espacio-3: 1.5rem;
+  --espacio-4: 2.5rem;
+  --espacio-5: 4rem;
+  --espacio-6: clamp(4rem, 3rem + 6vw, 8rem);
+
+  /* Layout */
+  --ancho-max: 1200px;
+  --alto-header: 72px;
+
+  /* Movimiento */
+  --transicion: 0.25s ease;
+}
+
+/* ---------- 2. Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--alto-header);
+}
+
+body, h1, h2, h3, h4, p, figure, blockquote, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+
+img, picture, video, svg { display: block; max-width: 100%; height: auto; }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+button { background: none; border: 0; padding: 0; cursor: pointer; }
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- 3. Base ---------- */
+body {
+  min-height: 100vh;
+  font-family: var(--fuente-texto);
+  font-size: var(--texto-m);
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--negro);
+  background: var(--marfil);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--fuente-titulo);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+h1 { font-size: var(--titulo-1); }
+h2 { font-size: var(--titulo-2); }
+h3 { font-size: var(--titulo-3); }
+
+p { max-width: 62ch; }
+
+::selection { background: var(--oro); color: var(--negro); }
+
+:focus-visible {
+  outline: 2px solid var(--oro);
+  outline-offset: 3px;
+}
+
+/* ---------- 4. Layout ---------- */
+.contenedor {
+  width: min(100% - 2.5rem, var(--ancho-max));
+  margin-inline: auto;
+}
+
+.seccion { padding-block: var(--espacio-6); }
+
+.seccion--oscura {
+  background: var(--negro);
+  color: var(--marfil);
+}
+
+.rejilla {
+  display: grid;
+  gap: var(--espacio-3);
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.centrado { text-align: center; }
+.centrado p { margin-inline: auto; }
+
+/* Solo para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- 5. Botones ---------- */
+.boton {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  font-size: var(--texto-s);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--oro);
+  color: var(--negro);
+  background: transparent;
+  transition: background var(--transicion), color var(--transicion);
+}
+.boton:hover { background: var(--oro); }
+
+.boton--lleno { background: var(--oro); }
+.boton--lleno:hover { background: var(--oro-claro); }
+
+.seccion--oscura .boton { color: var(--marfil); }
+.seccion--oscura .boton:hover { color: var(--negro); }
+
+/* ---------- 6. Header y navegación (clases previstas) ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--alto-header);
+  background: var(--negro);
+  color: var(--marfil);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transicion);
+}
+.header.is-scrolled { border-bottom-color: var(--linea); }
+
+.header__interior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.nav__lista {
+  display: flex;
+  gap: var(--espacio-4);
+}
+
+.nav__enlace {
+  position: relative;
+  padding-block: 0.25rem;
+  font-size: var(--texto-s);
+  letter-spacing: 0.08em;
+  transition: color var(--transicion);
+}
+.nav__enlace::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: var(--oro);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transicion);
+}
+.nav__enlace:hover { color: var(--oro-claro); }
+.nav__enlace:hover::after,
+.nav__enlace.is-activo::after { transform: scaleX(1); }
+.nav__enlace.is-activo { color: var(--oro); }
+
+/* Botón del menú móvil: oculto en escritorio */
+.menu-boton { display: none; }
+
+/* ---------- 7. Footer (clases previstas) ---------- */
+.footer {
+  padding-block: var(--espacio-5);
+  background: var(--negro);
+  color: var(--piedra);
+  font-size: var(--texto-s);
+}
+
+/* ---------- 8. Responsive ---------- */
+@media (max-width: 768px) {
+  .menu-boton {
+    display: grid;
+    place-items: center;
+    width: 44px; height: 44px;
+    color: var(--marfil);
+  }
+
+  .nav__lista {
+    position: absolute;
+    top: var(--alto-header);
+    left: 0; right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: var(--espacio-2) 1.25rem var(--espacio-3);
+    background: var(--negro);
+    border-bottom: 1px solid var(--linea);
+    /* Cerrado por defecto */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity var(--transicion), transform var(--transicion), visibility var(--transicion);
+  }
+  .nav__lista.is-abierto {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .nav__enlace { display: block; padding-block: 0.9rem; }
+}
+
+/* ---------- 9. Accesibilidad de movimiento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+
+/* ==========================================================
+   COMPONENTES DEL INICIO
+   ========================================================== */
+
+/* ---------- Saltar al contenido ---------- */
+.saltar {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 200;
+  padding: 0.75rem 1.25rem;
+  background: var(--oro);
+  color: var(--negro);
+  font-size: var(--texto-s);
+  transition: top var(--transicion);
+}
+.saltar:focus { top: 1rem; }
+
+/* ---------- Logo ---------- */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.logo__monograma {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--oro);
+  color: var(--oro);
+  font-family: var(--fuente-titulo);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.logo__nombre {
+  font-family: var(--fuente-titulo);
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Icono del menú móvil ---------- */
+.menu-boton__barras,
+.menu-boton__barras::before,
+.menu-boton__barras::after {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform var(--transicion), background var(--transicion);
+}
+.menu-boton__barras { position: relative; }
+.menu-boton__barras::before,
+.menu-boton__barras::after { content: ""; position: absolute; left: 0; }
+.menu-boton__barras::before { top: -7px; }
+.menu-boton__barras::after { top: 7px; }
+
+.menu-boton[aria-expanded="true"] .menu-boton__barras { background: transparent; }
+.menu-boton[aria-expanded="true"] .menu-boton__barras::before { transform: translateY(7px) rotate(45deg); }
+.menu-boton[aria-expanded="true"] .menu-boton__barras::after { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- Encabezados de sección ---------- */
+.encabezado {
+  margin-bottom: var(--espacio-5);
+}
+.encabezado p {
+  margin-top: var(--espacio-2);
+  font-size: var(--texto-l);
+  color: var(--piedra);
+}
+.seccion--oscura .encabezado p { color: var(--oro-claro); }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - var(--alto-header));
+  min-height: calc(100svh - var(--alto-header));
+  padding-block: var(--espacio-6);
+  overflow: hidden;
+}
+
+/* Monograma gigante de fondo, solo contorno */
+.hero::before {
+  content: "MS";
+  position: absolute;
+  right: -0.05em;
+  bottom: -0.2em;
+  font-family: var(--fuente-titulo);
+  font-size: clamp(14rem, 40vw, 36rem);
+  font-weight: 500;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--linea);
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero__interior {
+  position: relative;
+  display: grid;
+  justify-items: start;
+  gap: var(--espacio-3);
+  animation: entrada 0.9s ease both;
+}
+.hero__titulo {
+  max-width: 14ch;
+  color: var(--marfil);
+}
+.hero__texto {
+  max-width: 46ch;
+  font-size: var(--texto-l);
+  color: rgba(246, 244, 239, 0.8);
+}
+.hero .boton { margin-top: var(--espacio-2); }
+
+@keyframes entrada {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Colecciones ---------- */
+.colecciones {
+  display: grid;
+  gap: var(--espacio-3);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.categoria {
+  display: flex;
+  flex-direction: column;
+  background: var(--negro);
+  color: var(--marfil);
+  border: 1px solid transparent;
+  transition: border-color var(--transicion);
+}
+.categoria:hover,
+.categoria:focus-visible { border-color: var(--oro); }
+
+.categoria__media {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background-color: var(--grafito);
+}
+/* Fondos de relleno hasta tener fotos reales */
+.categoria__media--perfumes { background-image: linear-gradient(160deg, #2a2418 0%, #0c0c0c 100%); }
+.categoria__media--relojes  { background-image: linear-gradient(160deg, #1f2124 0%, #0c0c0c 100%); }
+.categoria__media--moda     { background-image: linear-gradient(160deg, #26201f 0%, #0c0c0c 100%); }
+
+.categoria__texto {
+  display: grid;
+  gap: var(--espacio-1);
+  padding: var(--espacio-3);
+}
+.categoria__texto p {
+  font-size: var(--texto-s);
+  color: rgba(246, 244, 239, 0.7);
+}
+.categoria__enlace {
+  justify-self: start;
+  margin-top: var(--espacio-1);
+  padding-bottom: 0.2rem;
+  font-size: var(--texto-s);
+  letter-spacing: 0.06em;
+  color: var(--oro);
+  border-bottom: 1px solid var(--oro);
+}
+
+/* ---------- Valores ---------- */
+.valores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.valor {
+  padding: var(--espacio-2) var(--espacio-4);
+  border-left: 1px solid var(--linea);
+}
+.valor:first-child { padding-left: 0; border-left: 0; }
+.valor h3 { color: var(--oro-claro); }
+.valor p { margin-top: var(--espacio-2); color: rgba(246, 244, 239, 0.75); }
+
+/* ---------- Sobre nosotros ---------- */
+.sobre {
+  display: grid;
+  gap: var(--espacio-4);
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+.sobre__texto { display: grid; gap: var(--espacio-3); font-size: var(--texto-l); }
+
+/* ---------- Footer ---------- */
+.footer__interior {
+  display: grid;
+  gap: var(--espacio-4);
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+.footer__marca {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: var(--marfil);
+  font-family: var(--fuente-titulo);
+  font-size: 1.3rem;
+}
+.footer__lista { display: flex; gap: var(--espacio-4); }
+.footer__lista a { transition: color var(--transicion); }
+.footer__lista a:hover { color: var(--oro-claro); }
+.footer__legal {
+  grid-column: 1 / -1;
+  padding-top: var(--espacio-3);
+  border-top: 1px solid rgba(138, 133, 120, 0.3);
+  max-width: none;
+}
+
+/* ---------- Responsive de componentes ---------- */
+@media (max-width: 960px) {
+  .colecciones { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+  .categoria__media { aspect-ratio: 16 / 10; }
+  .sobre { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .logo__nombre { font-size: 1.2rem; }
+  .valores { grid-template-columns: 1fr; gap: var(--espacio-4); }
+  .valor, .valor:first-child { padding: 0 0 0 var(--espacio-3); border-left: 1px solid var(--linea); }
+  .footer__interior { grid-template-columns: 1fr; }
+  .footer__lista { flex-wrap: wrap; gap: var(--espacio-3); }
+}
+
+
+/* ==========================================================
+   AJUSTES DE RESPONSIVIDAD (móvil, tablet y escritorio)
+   ========================================================== */
+
+/* Márgenes seguros en celulares con notch o barra inferior */
+@supports (padding: max(0px)) {
+  .contenedor {
+    width: 100%;
+    max-width: var(--ancho-max);
+    margin-inline: auto;
+    padding-inline: max(1.25rem, env(safe-area-inset-left), env(safe-area-inset-right));
+  }
+  .footer { padding-bottom: max(var(--espacio-5), env(safe-area-inset-bottom)); }
+}
+
+/* Efectos hover solo donde existe puntero (evita hover "pegado" en táctil) */
+@media (hover: none) {
+  .categoria:hover { border-color: transparent; }
+  .boton:hover { background: transparent; }
+  .boton--lleno:hover { background: var(--oro); }
+  .seccion--oscura .boton:hover { color: var(--marfil); }
+  .nav__enlace:hover { color: inherit; }
+  .nav__enlace.is-activo:hover { color: var(--oro); }
+  .nav__enlace:hover::after { transform: scaleX(0); }
+  .nav__enlace.is-activo:hover::after { transform: scaleX(1); }
+  .footer__lista a:hover { color: inherit; }
+}
+
+/* Zonas táctiles cómodas (mínimo ~44px) */
+@media (pointer: coarse) {
+  .footer__lista a { display: inline-block; padding-block: 0.8rem; }
+  .categoria__enlace { padding-block: 0.6rem; }
+  .boton { padding-block: 1rem; }
+}
+
+/* Menú móvil: sin subrayado de ancho completo, activo en dorado; con scroll si no cabe */
+@media (max-width: 768px) {
+  .nav__enlace::after { display: none; }
+  .nav__lista { max-height: calc(100vh - var(--alto-header)); overflow-y: auto; }
+}
+
+/* Teléfonos muy angostos */
+@media (max-width: 360px) {
+  .logo { gap: 0.6rem; }
+  .logo__monograma { width: 36px; height: 36px; font-size: 1rem; }
+  .logo__nombre { font-size: 1.05rem; }
+  .hero__titulo { font-size: 2.4rem; }
+}
+
+/* Celulares en horizontal: el hero no necesita ocupar toda la pantalla */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { min-height: auto; padding-block: var(--espacio-5); }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1600px) {
+  :root { --ancho-max: 1320px; }
+}
+
+  </style>
+</head>
+<body data-pagina="inicio">
+
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <div class="contenedor header__interior">
+
+      <a class="logo" href="index.html" aria-label="Maison Sánchez, ir al inicio">
+        <span class="logo__monograma" aria-hidden="true">MS</span>
+        <span class="logo__nombre">Maison Sánchez</span>
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <button class="menu-boton" type="button" data-menu-boton aria-controls="menu-principal" aria-label="Abrir menú">
+          <span class="menu-boton__barras" aria-hidden="true"></span>
+        </button>
+
+        <ul class="nav__lista" id="menu-principal" data-menu>
+          <li><a class="nav__enlace" data-pagina="inicio" href="index.html">Inicio</a></li>
+          <li><a class="nav__enlace" data-pagina="perfumes" href="perfumes.html">Perfumes</a></li>
+          <li><a class="nav__enlace" data-pagina="relojes" href="relojes.html">Relojes</a></li>
+          <li><a class="nav__enlace" data-pagina="moda" href="moda.html">Moda</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ========== HERO ========== -->
+    <section class="hero seccion--oscura" aria-labelledby="hero-titulo">
+      <div class="contenedor hero__interior">
+        <h1 id="hero-titulo" class="hero__titulo">Lo mejor del lujo, elegido con cuidado.</h1>
+        <p class="hero__texto">
+          Perfumes, relojes y moda seleccionados pieza por pieza,
+          para que comprar bien sea sencillo y a buen precio.
+        </p>
+        <a class="boton boton--lleno" href="#colecciones">Ver colecciones</a>
+      </div>
+    </section>
+
+    <!-- ========== COLECCIONES ========== -->
+    <section class="seccion" id="colecciones" aria-labelledby="colecciones-titulo">
+      <div class="contenedor">
+
+        <div class="encabezado">
+          <h2 id="colecciones-titulo">Nuestras colecciones</h2>
+          <p>Tres categorías, una misma exigencia: que cada pieza valga lo que cuesta.</p>
+        </div>
+
+        <div class="colecciones">
+
+          <!-- Para usar una foto: sustituye el <div class="categoria__media ..."> por
+               <img class="categoria__media" src="img/perfumes.jpg" alt="Perfumes"> -->
+          <a class="categoria" href="perfumes.html">
+            <div> <img class="categoria__media" src="/Users/veronicasanchez/Downloads/swinger/Boss bottle night.jpg" alt="Colección de perfumes" loading="lazy">
+         </div>
+            <div class="categoria__texto">
+              <h3>Perfumes</h3>
+              <p>Fragancias de casas reconocidas, listas para acompañarte.</p>
+              <span class="categoria__enlace">Explorar perfumes</span>
+            </div>
+          </a>
+
+          <a class="categoria" href="relojes.html">
+            <img class="categoria__media" src="/Users/veronicasanchez/Downloads/swinger/casio002.jpg" alt="Colección de perfumes" loading="lazy">
+            <div class="categoria__texto">
+              <h3>Relojes</h3>
+              <p>Piezas con carácter para marcar la diferencia en tu muñeca.</p>
+              <span class="categoria__enlace">Explorar relojes</span>
+            </div>
+          </a>
+
+          <a class="categoria" href="moda.html">
+            <img class="categoria__media" src="/Users/veronicasanchez/Downloads/swinger/polo1-delantero.jpg" alt="Colección de perfumes" loading="lazy">
+            <div class="categoria__texto">
+              <h3>Moda</h3>
+              <p>Prendas y accesorios para vestir con estilo, todos los días.</p>
+              <span class="categoria__enlace">Explorar moda</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VALORES ========== -->
+    <section class="seccion seccion--oscura" aria-labelledby="valores-titulo">
+      <div class="contenedor">
+
+        <div class="encabezado">
+          <h2 id="valores-titulo">Por qué Maison Sánchez</h2>
+        </div>
+
+        <div class="valores">
+          <article class="valor">
+            <h3>Calidad verificada</h3>
+            <p>Revisamos cada pieza antes de ofrecerla. Lo que ves es lo que recibes.</p>
+          </article>
+          <article class="valor">
+            <h3>Trato cercano</h3>
+            <p>Te acompañamos antes y después de tu compra, con atención directa y sin prisas.</p>
+          </article>
+          <article class="valor">
+            <h3>Precios justos</h3>
+            <p>Lujo accesible: buscamos la mejor relación entre calidad y precio para ti.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========== SOBRE NOSOTROS ========== -->
+    <section class="seccion" aria-labelledby="sobre-titulo">
+      <div class="contenedor sobre">
+        <h2 id="sobre-titulo">Una boutique pequeña, con estándares grandes</h2>
+        <div class="sobre__texto">
+          <p>
+            Maison Sánchez nació del gusto por los buenos perfumes y creció hasta reunir
+            relojes y moda bajo una misma idea: elegir poco, pero elegir bien.
+          </p>
+          <p>
+            Cada pieza pasa por nuestras manos antes de llegar a las tuyas, porque
+            creemos que el lujo también es saber que alguien se tomó el tiempo de cuidarlo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="contenedor footer__interior">
+
+      <div class="footer__marca">
+        <span class="logo__monograma" aria-hidden="true">MS</span>
+        <p>Maison Sánchez</p>
+      </div>
+
+      <nav aria-label="Pie de página">
+        <ul class="footer__lista">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="perfumes.html">Perfumes</a></li>
+          <li><a href="relojes.html">Relojes</a></li>
+          <li><a href="moda.html">Moda</a></li>
+        </ul>
+      </nav>
+
+      <p class="footer__legal">&copy; <span data-anio>2026</span> Maison Sánchez. Todos los derechos reservados.</p>
+
+    </div>
+  </footer>
+
+  <script>
+/* ==========================================================
+   MAISON SÁNCHEZ — main.js (base compartida)
+   Todo está protegido: si un elemento aún no existe en el
+   HTML, el código simplemente no hace nada y no marca error.
+   ========================================================== */
+
+(() => {
+  "use strict";
+
+  const $ = (selector, ctx = document) => ctx.querySelector(selector);
+  const $$ = (selector, ctx = document) => [...ctx.querySelectorAll(selector)];
+
+  /* ---------- 1. Enlace activo en la navegación ----------
+     Cada página define <body data-pagina="inicio|perfumes|relojes|moda">
+     y cada enlace del menú lleva data-pagina con el mismo valor. */
+  function marcarEnlaceActivo() {
+    const actual = document.body.dataset.pagina;
+    if (!actual) return;
+
+    $$(".nav__enlace").forEach((enlace) => {
+      const activo = enlace.dataset.pagina === actual;
+      enlace.classList.toggle("is-activo", activo);
+      if (activo) enlace.setAttribute("aria-current", "page");
+      else enlace.removeAttribute("aria-current");
+    });
+  }
+
+  /* ---------- 2. Menú móvil ----------
+     Botón: [data-menu-boton]   Lista: [data-menu] */
+  function iniciarMenuMovil() {
+    const boton = $("[data-menu-boton]");
+    const menu = $("[data-menu]");
+    if (!boton || !menu) return;
+
+    const alternar = (abrir) => {
+      const abierto = abrir ?? !menu.classList.contains("is-abierto");
+      menu.classList.toggle("is-abierto", abierto);
+      boton.setAttribute("aria-expanded", String(abierto));
+    };
+
+    boton.setAttribute("aria-expanded", "false");
+    boton.addEventListener("click", () => alternar());
+
+    // Cierra al elegir un enlace
+    menu.addEventListener("click", (e) => {
+      if (e.target.closest("a")) alternar(false);
+    });
+
+    // Cierra con Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") alternar(false);
+    });
+
+    // Cierra si se agranda la pantalla
+    window.matchMedia("(min-width: 769px)").addEventListener("change", (e) => {
+      if (e.matches) alternar(false);
+    });
+  }
+
+  /* ---------- 3. Header con línea al hacer scroll ---------- */
+  function iniciarHeaderScroll() {
+    const header = $(".header");
+    if (!header) return;
+
+    const actualizar = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+    actualizar();
+    window.addEventListener("scroll", actualizar, { passive: true });
+  }
+
+  /* ---------- 4. Año automático en el footer ----------
+     <span data-anio></span> */
+  function actualizarAnio() {
+    $$("[data-anio]").forEach((el) => { el.textContent = new Date().getFullYear(); });
+  }
+
+  /* ---------- Inicio ---------- */
+  document.addEventListener("DOMContentLoaded", () => {
+    marcarEnlaceActivo();
+    iniciarMenuMovil();
+    iniciarHeaderScroll();
+    actualizarAnio();
+  });
+})();
+
+  </script>
+</body>
+</html>
